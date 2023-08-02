@@ -1,14 +1,12 @@
+use dirs::home_dir;
+use palette::Srgb;
 use std::{
     fs::{self, File},
     io::Write,
 };
-
-use crate::Result;
-use dirs::home_dir;
-use palette::Srgb;
 use toml_edit::{value, Document};
 
-pub fn write_colors(shades: Vec<Srgb<u8>>) -> Result<()> {
+pub fn write_colors(shades: Vec<Srgb<u8>>) {
     let home = home_dir()
         .expect("failed to get user home directory")
         .to_str()
@@ -43,6 +41,4 @@ pub fn write_colors(shades: Vec<Srgb<u8>>) -> Result<()> {
         .expect("failed to open starship.toml for writing")
         .write_all(doc.to_string().as_bytes())
         .expect("failed writing to starship.toml");
-
-    Ok(())
 }

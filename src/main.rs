@@ -7,5 +7,5 @@ fn main() {
 
     let shades = get_shades(color, 6);
 
-    _ = starship::write_colors(shades);
+    starship::write_colors(shades);
 }
