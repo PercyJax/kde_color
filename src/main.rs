@@ -1,11 +1,9 @@
-use kde_color::connections::starship;
-use kde_color::{get_accent_color, get_shades};
+use kde_color::connections::{alacritty, starship};
 
 fn main() {
-    let color =
-        get_accent_color().unwrap_or_else(|e| panic!("error getting KDE accent color: {e:?}"));
+    // Set Starship Prompt shades
+    starship::paint();
 
-    let shades = get_shades(color, 6);
-
-    starship::write_colors(shades);
+    // Set Alacritty color scheme
+    alacritty::paint();
 }
